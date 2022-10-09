@@ -1,0 +1,15 @@
+<settings>
+	<setting propertyKey="@Properties.refreshInterval" title="@Strings.RefreshIntervalTitle">
+		<settingConfig type="list">
+			<listEntry value="0">@Strings.Slow</listEntry>
+			<listEntry value="1">@Strings.Medium</listEntry>
+			<listEntry value="2">@Strings.Fast</listEntry>
+		</settingConfig>
+	</setting>
+	<setting propertyKey="@Properties.overrideBacklight" title="@Strings.OverrideBacklightTitle">
+		<settingConfig type="boolean" />
+	</setting>
+	<setting propertyKey="@Properties.showDebugData" title="@Strings.ShowDebugDataTitle">
+		<settingConfig type="boolean" />
+	</setting>
+</settings>

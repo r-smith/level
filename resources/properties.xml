@@ -1,0 +1,5 @@
+<properties>
+	<property id="refreshInterval" type="number">1</property>
+	<property id="overrideBacklight" type="boolean">true</property>
+	<property id="showDebugData" type="boolean">false</property>
+</properties>

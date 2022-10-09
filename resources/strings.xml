@@ -1,0 +1,10 @@
+<strings>
+    <string id="AppName">Level</string>
+        
+    <string id="ShowDebugDataTitle">Show accelerometer data</string>
+    <string id="OverrideBacklightTitle">Keep backlight on</string>
+    <string id="RefreshIntervalTitle">Screen refresh rate</string>
+    <string id="Slow">Slow</string>
+    <string id="Medium">Medium</string>
+    <string id="Fast">Fast</string>
+</strings>

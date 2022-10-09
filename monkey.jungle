@@ -1,0 +1,12 @@
+# Specify the project manifest.
+project.manifest = manifest.xml
+
+# All products exclude functions tagged for Venu Square 2 devices.
+base.excludeAnnotations = venuSquareVersion
+# Venu Square 2 devices get custom functions.
+venusq2.excludeAnnotations = regularVersion
+venusq2m.excludeAnnotations = regularVersion
+
+# Set a custom source path for instinct-type devices.
+base.sourcePath = source
+semioctagon.sourcePath = source-instinct

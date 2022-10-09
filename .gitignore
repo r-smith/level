@@ -1,0 +1,5 @@
+# Exclude the bin directory.
+bin/
+
+# Exclude device-specific resources.
+resources-*/
