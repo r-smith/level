@@ -18,12 +18,6 @@ class MainMenu extends WatchUi.Menu2 {
             $.settings.refreshStrings[$.settings.refreshInterval],
             :refreshInterval,
             null));
-        addItem(new WatchUi.ToggleMenuItem(
-            "Backlight",
-            {:enabled=>"Stay lit", :disabled=>"Normal"},
-            :backlight,
-            $.settings.overrideBacklight,
-            null));
     }
 }
 
@@ -42,10 +36,7 @@ class MainMenuDelegate extends WatchUi.Menu2InputDelegate {
     // stack.
     function onSelect(item) {
         var itemId = item.getId();
-        if (itemId == :backlight) {
-            $.settings.overrideBacklight = item.isEnabled();
-            $.settings.setValue("overrideBacklight", item.isEnabled());
-        } else if (itemId == :refreshInterval) {
+        if (itemId == :refreshInterval) {
             var menu = new WatchUi.Menu2({:title=>"Refresh"});
             menu.addItem(new WatchUi.MenuItem($.settings.refreshStrings[0], null, :slow, null));
             menu.addItem(new WatchUi.MenuItem($.settings.refreshStrings[1], null, :medium, null));

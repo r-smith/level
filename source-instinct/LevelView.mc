@@ -16,6 +16,7 @@ class LevelView extends WatchUi.View {
     private var _y2, _y3;
     private var _z2, _z3;
     private var _sensorTimer;
+    private var az;
     
     function initialize() {
         View.initialize();
@@ -55,7 +56,7 @@ class LevelView extends WatchUi.View {
     function onUpdate(dc) {
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.clear();
-        
+
         if ($.x == null) {
             drawHorizontalOverlay(dc);
             return;
@@ -69,14 +70,6 @@ class LevelView extends WatchUi.View {
 
         if ($.displayNotification) {
             drawNotificationOverlay(dc, ($.isCustomCalibration ? "Custom" : "Default"), "Calibration");
-        }
-        
-        if ($.settings.overrideBacklight) {
-            try {
-                Attention.backlight(true);
-            } catch (e) {
-                $.settings.overrideBacklight = false;
-            }
         }
         
         if ($.settings.hasRefreshChanged) {
@@ -124,6 +117,24 @@ class LevelView extends WatchUi.View {
         // bubble is horizontally level.
         dc.setPenWidth(3);
         dc.drawCircle(_centerX, _centerY, _bubbleRadius + 4);
+
+                // Draw the roll and pitch text values.
+        var rollDegrees = Math.toDegrees($.roll).toNumber();
+        if (rollDegrees > 180) {
+            rollDegrees %= 180;
+            rollDegrees = -180 + rollDegrees;
+        } else if (rollDegrees <= -180) {
+            rollDegrees %= -180;
+            rollDegrees = 180 + rollDegrees;
+        }
+        var h = dc.getFontHeight(Graphics.FONT_TINY);
+        var w = dc.getTextWidthInPixels("-", Graphics.FONT_LARGE);
+        w += w / 2;
+        dc.drawText(_centerX + w, _centerY, Graphics.FONT_TINY, "ROLL", Graphics.TEXT_JUSTIFY_LEFT);
+        dc.drawText(_centerX - w, _centerY, Graphics.FONT_TINY, "PITCH", Graphics.TEXT_JUSTIFY_RIGHT);
+        dc.drawText(_centerX + w, _centerY + h, Graphics.FONT_LARGE, -rollDegrees + "°", Graphics.TEXT_JUSTIFY_LEFT);
+        dc.drawText(_centerX - w, _centerY + h, Graphics.FONT_LARGE, -Math.toDegrees($.pitch).toNumber() + "°", Graphics.TEXT_JUSTIFY_RIGHT);
+
     }
 
     // [INSTINCT-CUSTOM]:
