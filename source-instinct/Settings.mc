@@ -7,7 +7,7 @@ class Settings {
     var refreshInterval = 1;            // 0 = slow, 1 = medium, 2 = fast
     var hasRefreshChanged = false;
     const refreshStrings = ["Slow", "Medium", "Fast"];
-    const refreshMiliseconds = [250, 100, 50];
+    const refreshMiliseconds = [2000, 500, 100];
     
     function initialize() {
         screenShape = System.getDeviceSettings().screenShape;
@@ -15,12 +15,10 @@ class Settings {
     
     function load() {
         if (Toybox.Application has :Properties) {
-            overrideBacklight = Properties.getValue("overrideBacklight");
             refreshInterval = Properties.getValue("refreshInterval");
             hasRefreshChanged = true;
         } else {
             var app = Application.getApp();
-            overrideBacklight = app.getProperty("overrideBacklight");
             refreshInterval = app.getProperty("refreshInterval");
         }
     }

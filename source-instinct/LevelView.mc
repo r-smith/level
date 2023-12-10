@@ -16,7 +16,6 @@ class LevelView extends WatchUi.View {
     private var _y2, _y3;
     private var _z2, _z3;
     private var _sensorTimer;
-    private var az;
     
     function initialize() {
         View.initialize();
@@ -118,7 +117,7 @@ class LevelView extends WatchUi.View {
         dc.setPenWidth(3);
         dc.drawCircle(_centerX, _centerY, _bubbleRadius + 4);
 
-                // Draw the roll and pitch text values.
+        // Draw the roll and pitch text values.
         var rollDegrees = Math.toDegrees($.roll).toNumber();
         if (rollDegrees > 180) {
             rollDegrees %= 180;
@@ -127,13 +126,71 @@ class LevelView extends WatchUi.View {
             rollDegrees %= -180;
             rollDegrees = 180 + rollDegrees;
         }
-        var h = dc.getFontHeight(Graphics.FONT_TINY);
-        var w = dc.getTextWidthInPixels("-", Graphics.FONT_LARGE);
+        var h = dc.getFontHeight(Graphics.FONT_TINY) - 10;
+        var w = dc.getTextWidthInPixels("-", Graphics.FONT_LARGE) + 18;
         w += w / 2;
-        dc.drawText(_centerX + w, _centerY, Graphics.FONT_TINY, "ROLL", Graphics.TEXT_JUSTIFY_LEFT);
-        dc.drawText(_centerX - w, _centerY, Graphics.FONT_TINY, "PITCH", Graphics.TEXT_JUSTIFY_RIGHT);
-        dc.drawText(_centerX + w, _centerY + h, Graphics.FONT_LARGE, -rollDegrees + "°", Graphics.TEXT_JUSTIFY_LEFT);
-        dc.drawText(_centerX - w, _centerY + h, Graphics.FONT_LARGE, -Math.toDegrees($.pitch).toNumber() + "°", Graphics.TEXT_JUSTIFY_RIGHT);
+
+        
+
+        dc.drawText(144, 100, Graphics.FONT_LARGE, -Math.toDegrees($.pitch).toNumber() + "°", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(144, 123, Graphics.FONT_LARGE, -rollDegrees + "°", Graphics.TEXT_JUSTIFY_CENTER);
+
+        if (settings.refreshInterval != 2) {
+            var picz = -Math.toDegrees($.pitch).toNumber();
+
+            var sin = Math.sin(Math.PI / 180 * picz).abs();
+            var cos = Math.sqrt(1 - sin * sin);
+
+            var tan;
+            var cot;
+            var sec;
+            var csc;
+
+            if (picz == 0) {
+                tan = 0;
+                cot = "-";
+                sec = 1;
+                csc = "-";
+
+                tan = tan.format("%.2f");
+                sec = sec.format("%.2f");
+            } else if (picz == 90) {
+                tan = "-";
+                cot = 0;
+                sec = "-";
+                csc = 1;
+
+                cot = cot.format("%.2f");
+                csc = csc.format("%.2f");
+            } else {
+                tan = sin / cos;
+                cot = 1 / tan;
+                sec = 1 / cos;
+                csc = 1 / sin;
+
+                tan = tan.format("%.2f");
+                cot = cot.format("%.2f");
+                sec = sec.format("%.2f");
+                csc = csc.format("%.2f");
+            }
+
+            sin = sin.format("%.2f");
+            cos = cos.format("%.2f");
+
+            dc.drawText(15, 15, Graphics.FONT_TINY, "sin", Graphics.TEXT_JUSTIFY_LEFT);
+            dc.drawText(15, 31, Graphics.FONT_TINY, "cos", Graphics.TEXT_JUSTIFY_LEFT);
+            dc.drawText(15, 47, Graphics.FONT_TINY, "tan", Graphics.TEXT_JUSTIFY_LEFT);
+            dc.drawText(15, 97, Graphics.FONT_TINY, "cot", Graphics.TEXT_JUSTIFY_LEFT);
+            dc.drawText(15, 113, Graphics.FONT_TINY, "sec", Graphics.TEXT_JUSTIFY_LEFT);
+            dc.drawText(15, 129, Graphics.FONT_TINY, "csc", Graphics.TEXT_JUSTIFY_LEFT);
+
+            dc.drawText(67, 15, Graphics.FONT_TINY, sin, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(67, 31, Graphics.FONT_TINY, cos, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(67, 47, Graphics.FONT_TINY, tan, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(67, 97, Graphics.FONT_TINY, cot, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(67, 113, Graphics.FONT_TINY, sec, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(67, 129, Graphics.FONT_TINY, csc, Graphics.TEXT_JUSTIFY_CENTER);
+        }
 
     }
 
@@ -193,11 +250,69 @@ class LevelView extends WatchUi.View {
         var h = dc.getFontHeight(Graphics.FONT_TINY);
         var w = dc.getTextWidthInPixels("-", Graphics.FONT_LARGE);
         w += w / 2;
-        dc.drawText(_centerX + w, _centerY, Graphics.FONT_TINY, "ROLL", Graphics.TEXT_JUSTIFY_LEFT);
-        dc.drawText(_centerX - w, _centerY, Graphics.FONT_TINY, "PITCH", Graphics.TEXT_JUSTIFY_RIGHT);
-        dc.drawText(_centerX + w, _centerY + h, Graphics.FONT_LARGE, rollDegrees + "°", Graphics.TEXT_JUSTIFY_LEFT);
-        dc.drawText(_centerX - w, _centerY + h, Graphics.FONT_LARGE, Math.toDegrees($.pitch).toNumber() + "°", Graphics.TEXT_JUSTIFY_RIGHT);
         
+        dc.drawText(144, 100, Graphics.FONT_LARGE, Math.toDegrees($.pitch).toNumber() + "°", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(144, 123, Graphics.FONT_LARGE, -rollDegrees + "°", Graphics.TEXT_JUSTIFY_CENTER);
+
+        if (settings.refreshInterval != 2) {
+            var picz = Math.toDegrees($.pitch).toNumber();
+
+            var sin = Math.cos(Math.PI / 180 * picz);
+            var cos = Math.sqrt(1 - sin * sin);
+
+            var tan;
+            var cot;
+            var sec;
+            var csc;
+
+            if (picz == 0) {
+
+                tan = "-";
+                cot = 0;
+                sec = "-";
+                csc = 1;
+
+                cot = cot.format("%.2f");
+                csc = csc.format("%.2f");
+            } else if (picz == 90) {
+                tan = 0;
+                cot = "-";
+                sec = 1;
+                csc = "-";
+
+                tan = tan.format("%.2f");
+                sec = sec.format("%.2f");
+            } else {
+
+                tan = sin / cos;
+                cot = 1 / tan;
+                sec = 1 / cos;
+                csc = 1 / sin;
+
+                tan = tan.format("%.2f");
+                cot = cot.format("%.2f");
+                sec = sec.format("%.2f");
+                csc = csc.format("%.2f");
+            }
+
+            sin = sin.format("%.2f");
+            cos = cos.format("%.2f");
+
+            dc.drawText(15, 15, Graphics.FONT_TINY, "sin", Graphics.TEXT_JUSTIFY_LEFT);
+            dc.drawText(15, 31, Graphics.FONT_TINY, "cos", Graphics.TEXT_JUSTIFY_LEFT);
+            dc.drawText(15, 47, Graphics.FONT_TINY, "tan", Graphics.TEXT_JUSTIFY_LEFT);
+            dc.drawText(15, 97, Graphics.FONT_TINY, "cot", Graphics.TEXT_JUSTIFY_LEFT);
+            dc.drawText(15, 113, Graphics.FONT_TINY, "sec", Graphics.TEXT_JUSTIFY_LEFT);
+            dc.drawText(15, 129, Graphics.FONT_TINY, "csc", Graphics.TEXT_JUSTIFY_LEFT);
+
+            dc.drawText(67, 15, Graphics.FONT_TINY, sin, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(67, 31, Graphics.FONT_TINY, cos, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(67, 47, Graphics.FONT_TINY, tan, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(67, 97, Graphics.FONT_TINY, cot, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(67, 113, Graphics.FONT_TINY, sec, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(67, 129, Graphics.FONT_TINY, csc, Graphics.TEXT_JUSTIFY_CENTER);
+        }
+
         // Draw the vertical-style overlay.
         drawVerticalOverlay(dc);
     }
