@@ -152,44 +152,44 @@ class LevelView extends WatchUi.View {
                 sec = 1;
                 csc = "-";
 
-                tan = tan.format("%.2f");
-                sec = sec.format("%.2f");
+                tan = tan.format("%.3f");
+                sec = sec.format("%.3f");
             } else if (picz == 90) {
                 tan = "-";
                 cot = 0;
                 sec = "-";
                 csc = 1;
 
-                cot = cot.format("%.2f");
-                csc = csc.format("%.2f");
+                cot = cot.format("%.3f");
+                csc = csc.format("%.3f");
             } else {
                 tan = sin / cos;
                 cot = 1 / tan;
                 sec = 1 / cos;
                 csc = 1 / sin;
 
-                tan = tan.format("%.2f");
-                cot = cot.format("%.2f");
-                sec = sec.format("%.2f");
-                csc = csc.format("%.2f");
+                tan = tan.format("%.3f");
+                cot = cot.format("%.3f");
+                sec = sec.format("%.3f");
+                csc = csc.format("%.3f");
             }
 
-            sin = sin.format("%.2f");
-            cos = cos.format("%.2f");
+            sin = sin.format("%.3f");
+            cos = cos.format("%.3f");
 
-            dc.drawText(15, 15, Graphics.FONT_TINY, "sin", Graphics.TEXT_JUSTIFY_LEFT);
-            dc.drawText(15, 31, Graphics.FONT_TINY, "cos", Graphics.TEXT_JUSTIFY_LEFT);
-            dc.drawText(15, 47, Graphics.FONT_TINY, "tan", Graphics.TEXT_JUSTIFY_LEFT);
-            dc.drawText(15, 97, Graphics.FONT_TINY, "cot", Graphics.TEXT_JUSTIFY_LEFT);
-            dc.drawText(15, 113, Graphics.FONT_TINY, "sec", Graphics.TEXT_JUSTIFY_LEFT);
-            dc.drawText(15, 129, Graphics.FONT_TINY, "csc", Graphics.TEXT_JUSTIFY_LEFT);
+            dc.drawText(13, 15, Graphics.FONT_TINY, "sin", Graphics.TEXT_JUSTIFY_LEFT);
+            dc.drawText(13, 31, Graphics.FONT_TINY, "cos", Graphics.TEXT_JUSTIFY_LEFT);
+            dc.drawText(13, 47, Graphics.FONT_TINY, "tan", Graphics.TEXT_JUSTIFY_LEFT);
+            dc.drawText(13, 100, Graphics.FONT_TINY, "cot", Graphics.TEXT_JUSTIFY_LEFT);
+            dc.drawText(13, 116, Graphics.FONT_TINY, "sec", Graphics.TEXT_JUSTIFY_LEFT);
+            dc.drawText(13, 132, Graphics.FONT_TINY, "csc", Graphics.TEXT_JUSTIFY_LEFT);
 
-            dc.drawText(67, 15, Graphics.FONT_TINY, sin, Graphics.TEXT_JUSTIFY_CENTER);
-            dc.drawText(67, 31, Graphics.FONT_TINY, cos, Graphics.TEXT_JUSTIFY_CENTER);
-            dc.drawText(67, 47, Graphics.FONT_TINY, tan, Graphics.TEXT_JUSTIFY_CENTER);
-            dc.drawText(67, 97, Graphics.FONT_TINY, cot, Graphics.TEXT_JUSTIFY_CENTER);
-            dc.drawText(67, 113, Graphics.FONT_TINY, sec, Graphics.TEXT_JUSTIFY_CENTER);
-            dc.drawText(67, 129, Graphics.FONT_TINY, csc, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(65, 15, Graphics.FONT_TINY, sin, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(65, 31, Graphics.FONT_TINY, cos, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(65, 47, Graphics.FONT_TINY, tan, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(65, 100, Graphics.FONT_TINY, cot, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(65, 116, Graphics.FONT_TINY, sec, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(65, 132, Graphics.FONT_TINY, csc, Graphics.TEXT_JUSTIFY_CENTER);
         }
 
     }
@@ -272,16 +272,16 @@ class LevelView extends WatchUi.View {
                 sec = "-";
                 csc = 1;
 
-                cot = cot.format("%.2f");
-                csc = csc.format("%.2f");
+                cot = cot.format("%.3f");
+                csc = csc.format("%.3f");
             } else if (picz == 90) {
                 tan = 0;
                 cot = "-";
                 sec = 1;
                 csc = "-";
 
-                tan = tan.format("%.2f");
-                sec = sec.format("%.2f");
+                tan = tan.format("%.3f");
+                sec = sec.format("%.3f");
             } else {
 
                 tan = sin / cos;
@@ -289,28 +289,28 @@ class LevelView extends WatchUi.View {
                 sec = 1 / cos;
                 csc = 1 / sin;
 
-                tan = tan.format("%.2f");
-                cot = cot.format("%.2f");
-                sec = sec.format("%.2f");
-                csc = csc.format("%.2f");
+                tan = tan.format("%.3f");
+                cot = cot.format("%.3f");
+                sec = sec.format("%.3f");
+                csc = csc.format("%.3f");
             }
 
-            sin = sin.format("%.2f");
-            cos = cos.format("%.2f");
+            sin = sin.format("%.3f");
+            cos = cos.format("%.3f");
 
-            dc.drawText(15, 15, Graphics.FONT_TINY, "sin", Graphics.TEXT_JUSTIFY_LEFT);
-            dc.drawText(15, 31, Graphics.FONT_TINY, "cos", Graphics.TEXT_JUSTIFY_LEFT);
-            dc.drawText(15, 47, Graphics.FONT_TINY, "tan", Graphics.TEXT_JUSTIFY_LEFT);
-            dc.drawText(15, 97, Graphics.FONT_TINY, "cot", Graphics.TEXT_JUSTIFY_LEFT);
-            dc.drawText(15, 113, Graphics.FONT_TINY, "sec", Graphics.TEXT_JUSTIFY_LEFT);
-            dc.drawText(15, 129, Graphics.FONT_TINY, "csc", Graphics.TEXT_JUSTIFY_LEFT);
+            dc.drawText(13, 15, Graphics.FONT_TINY, "sin", Graphics.TEXT_JUSTIFY_LEFT);
+            dc.drawText(13, 31, Graphics.FONT_TINY, "cos", Graphics.TEXT_JUSTIFY_LEFT);
+            dc.drawText(13, 47, Graphics.FONT_TINY, "tan", Graphics.TEXT_JUSTIFY_LEFT);
+            dc.drawText(13, 100, Graphics.FONT_TINY, "cot", Graphics.TEXT_JUSTIFY_LEFT);
+            dc.drawText(13, 116, Graphics.FONT_TINY, "sec", Graphics.TEXT_JUSTIFY_LEFT);
+            dc.drawText(13, 132, Graphics.FONT_TINY, "csc", Graphics.TEXT_JUSTIFY_LEFT);
 
-            dc.drawText(67, 15, Graphics.FONT_TINY, sin, Graphics.TEXT_JUSTIFY_CENTER);
-            dc.drawText(67, 31, Graphics.FONT_TINY, cos, Graphics.TEXT_JUSTIFY_CENTER);
-            dc.drawText(67, 47, Graphics.FONT_TINY, tan, Graphics.TEXT_JUSTIFY_CENTER);
-            dc.drawText(67, 97, Graphics.FONT_TINY, cot, Graphics.TEXT_JUSTIFY_CENTER);
-            dc.drawText(67, 113, Graphics.FONT_TINY, sec, Graphics.TEXT_JUSTIFY_CENTER);
-            dc.drawText(67, 129, Graphics.FONT_TINY, csc, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(65, 15, Graphics.FONT_TINY, sin, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(65, 31, Graphics.FONT_TINY, cos, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(65, 47, Graphics.FONT_TINY, tan, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(65, 100, Graphics.FONT_TINY, cot, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(65, 116, Graphics.FONT_TINY, sec, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(65, 132, Graphics.FONT_TINY, csc, Graphics.TEXT_JUSTIFY_CENTER);
         }
 
         // Draw the vertical-style overlay.
